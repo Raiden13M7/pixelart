@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <!--
+      New Perspectives on HTML and CSS, 8th Edition
+      Tutorial 8 - Case Problem 2
+      Pixal Arts and Entertainment
+      Mouse Bird Game
+      Author: Raiden McCurdy
+      Date: 10/26/2026
+      Filename: pa_game.html
+   -->
+
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+   <title>Pixal Arts and Entertainment: Mouse Bird</title>
+<link href="paa_reset.css" rel="stylesheet" />
+<link href="paa_styles.css" rel="stylesheet" />
+<link href="paa_mousebird.css" rel="stylesheet" />
+</head>
+
+<body>
+   <header>
+      <nav class="horizontal" id="topLinks">
+         <img src="paa_logo.png"
+              alt="Pixal Arts and Entertainment"
+              id="companyLogo" />
+
+         <ul>
+            <li><a href="#">members</a></li>
+            <li><a href="#">shopping cart</a></li>
+            <li><a href="#">support</a></li>
+            <li><a href="#">contact us</a></li>
+         </ul>
+      </nav>
+
+      <img src="paa_game.png"
+           alt="Mouse Bird"
+           id="gameLogo" />
+
+      <nav class="horizontal" id="gameLinks">
+         <ul>
+            <li><a href="#mouseBirdGame">play game</a></li>
+            <li><a href="#mouseBirdInstructions">instructions</a></li>
+            <li><a href="#mouseBirdArticle">about the game</a></li>
+            <li><a href="#pageFooter">contact</a></li>
+         </ul>
+      </nav>
+   </header>
+
+   <section>
+
+      <aside>
+         <p>&#9733;&#9733;&#9733;&#9733;&#9733;<br />
+            &mdash; Digital Game Review</p>
+
+         <p>&ldquo;Best New Arcade Game&rdquo;<br />
+            &mdash; <em>Gamers' Choice Awards</em></p>
+
+         <p>&ldquo;Fun and Addicting&rdquo;<br />
+            &mdash; <em>Arcade World</em></p>
+
+         <p>&ldquo;Crazy and Endlessly Inventive&rdquo;<br />
+            &mdash; M' Board</p>
+      </aside>
+
+      <div id="gameBox">
+         <div id="mouseBirdGame">
+            <h1>Mouse Bird</h1>
+
+            <p id="mouseBirdInstructions">
+               Click or tap the game, or press Space, to fly.
+               Avoid the pipes and earn points!
+            </p>
+
+            <canvas id="myCanvas"
+                    width="320"
+                    height="480"
+                    aria-label="Mouse Bird arcade game">
+               Your browser does not support HTML canvas.
+            </canvas>
+
+            <button id="restartButton" type="button">
+               Restart Game
+            </button>
+         </div>
+      </div>
+
+      <article id="mouseBirdArticle">
+         <p>Get ready for Mouse Bird! Guide your flying character
+            through a series of obstacles and try to earn the
+            highest score possible.
+         </p>
+
+         <p>Click, tap, or press the Space bar to make the bird
+            flap upward. Time your movements carefully to pass
+            between the pipes without hitting them.
+         </p>
+
+         <p>Challenge yourself, improve your score, and see how
+            long you can keep flying. Good luck!
+         </p>
+      </article>
+
+   </section>
+
+   <footer id="pageFooter">
+      Pixal Arts and Entertainment &copy; 2026 English (US)
+      <span>
+         <a href="#">About</a>
+         <a href="#">Developers</a>
+         <a href="#">Terms</a>
+      </span>
+   </footer>
+
+   <script src="mouse_bird.js"></script>
+</body>
+</html>

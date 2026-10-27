@@ -1,0 +1,299 @@
+@charset "utf-8";
+
+/*
+   New Perspectives on HTML and CSS, 8th Edition
+   Tutorial 8
+   Case Problem 2
+
+   Pixal Arts and Entertainment
+   Mouse Bird Game Stylesheet
+
+   Filename: paa_mousebird.css
+*/
+
+
+/* HTML and Body styles */
+
+html {
+   font-family: Verdana, Geneva, sans-serif;
+}
+
+body {
+   margin: 0px auto;
+   width: 100%;
+   max-width: 900px;
+}
+
+
+/* Header Styles */
+
+header {
+   width: 100%;
+}
+
+
+/* Company Links list styles */
+
+nav#topLinks {
+   height: 80px;
+   border-bottom: 2px solid rgb(254, 232, 125);
+}
+
+nav#topLinks img#companyLogo {
+   float: right;
+   height: 100%;
+}
+
+nav#topLinks > ul {
+   float: right;
+}
+
+nav#topLinks > ul > li {
+   float: right;
+   font-size: 1em;
+   vertical-align: bottom;
+   padding: 50px 10px 0px;
+}
+
+nav#topLinks > ul > li > a {
+   color: rgb(32, 170, 204);
+   display: block;
+   width: 100%;
+}
+
+nav#topLinks > ul > li > a:hover {
+   color: rgb(254, 232, 125);
+}
+
+
+/* Game Logo Styles */
+
+header img#gameLogo {
+   clear: right;
+   display: block;
+   width: 100%;
+}
+
+
+/* Game Links list styles */
+
+nav#gameLinks {
+   margin-top: -20px;
+   margin-bottom: 30px;
+}
+
+nav#gameLinks > ul {
+   display: flex;
+   flex-flow: row wrap;
+   justify-content: center;
+}
+
+nav#gameLinks > ul > li {
+   font-size: 1.2em;
+   line-height: 1.5em;
+   padding: 0px 10px;
+}
+
+nav#gameLinks > ul > li > a {
+   display: block;
+   width: 100%;
+   color: rgb(32, 170, 204);
+}
+
+
+/* Section Styles */
+
+body > section {
+   display: flex;
+   flex-flow: row wrap;
+   align-items: flex-start;
+}
+
+
+/* Aside Styles */
+
+aside {
+   flex: 0 0 200px;
+   padding-top: 80px;
+}
+
+aside p {
+   font-size: 0.9em;
+   margin: 0px 8px 26px;
+   text-align: center;
+}
+
+
+/* Gamebox Styles */
+
+div#gameBox {
+   box-sizing: border-box;
+   background: url("paa_forest.png") center center / cover no-repeat;
+   border-radius: 20px;
+   min-width: 0;
+   min-height: 0;
+   height: auto;
+   padding: 15px;
+   position: relative;
+   overflow: visible;
+
+   display: flex;
+   flex: 1 1 320px;
+   justify-content: center;
+   align-items: flex-start;
+}
+
+
+/* Mouse Bird Game Styles */
+
+#mouseBirdGame {
+   display: block;
+   width: 100%;
+   max-width: 340px;
+   min-width: 0;
+   margin: 0px auto;
+   text-align: center;
+   font-family: Arial, sans-serif;
+}
+
+#mouseBirdGame h1 {
+   margin: 0px 0px 8px;
+   font-size: 1.6em;
+   line-height: 1.3em;
+}
+
+#mouseBirdInstructions {
+   margin: 0px 0px 10px;
+   font-size: 0.9em;
+   line-height: 1.4em;
+}
+
+
+/* Canvas Styles */
+
+canvas#myCanvas {
+   display: block;
+   width: 100%;
+   max-width: 320px;
+   height: auto;
+   margin: 0px auto;
+   border: 1px solid #0a3cda;
+   box-sizing: border-box;
+   background-color: #83d9ef;
+   touch-action: manipulation;
+}
+
+
+/* Restart Button Styles */
+
+#restartButton {
+   display: inline-block;
+   margin: 10px auto;
+   padding: 9px 18px;
+   border: 0px;
+   border-radius: 5px;
+   background-color: #ffd447;
+   color: #222;
+   font-size: 1em;
+   font-weight: bold;
+   cursor: pointer;
+}
+
+#restartButton:hover {
+   background-color: #ffe582;
+}
+
+#restartButton:focus-visible {
+   outline: 3px solid #0a3cda;
+   outline-offset: 3px;
+}
+
+
+/* Old Animation Styles */
+
+#butterfly,
+#bat,
+#fox {
+   display: none;
+}
+
+
+/* Article Styles */
+
+article {
+   flex: 1 1 100%;
+   min-width: 0;
+   margin-top: 15px;
+   margin-left: 0px;
+   padding-top: 10px;
+
+   column-count: 3;
+   column-gap: 20px;
+   column-rule: 1px solid rgb(255, 194, 99);
+}
+
+article p {
+   margin: 0px 0px 20px;
+   font-size: 0.9em;
+}
+
+article a {
+   color: rgb(255, 194, 99);
+}
+
+
+/* Footer Styles */
+
+footer {
+   border-top: 1px solid rgb(255, 194, 99);
+   display: block;
+   width: 100%;
+   margin-top: 20px;
+   padding: 5px 0px 10px;
+   text-align: center;
+}
+
+footer a {
+   color: rgb(255, 194, 99);
+   text-decoration: none;
+}
+
+
+/* Responsive Layout Styles */
+
+@media screen and (max-width: 920px) {
+   body {
+      width: 96%;
+   }
+
+   aside {
+      flex: 0 0 180px;
+   }
+}
+
+@media screen and (max-width: 600px) {
+   body > section {
+      flex-direction: column;
+   }
+
+   aside {
+      flex: 1 1 auto;
+      width: 100%;
+      padding-top: 15px;
+   }
+
+   div#gameBox {
+      width: 100%;
+      flex: 1 1 auto;
+      padding: 10px;
+   }
+
+   article {
+      column-count: 1;
+   }
+
+   nav#gameLinks > ul > li {
+      font-size: 1em;
+      padding: 0px 6px;
+   }
+}

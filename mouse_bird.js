@@ -5,9 +5,6 @@
    Filename: mouse_bird.js
 */
 
-
-/* Canvas Setup */
-
 const myCanvas = document.getElementById("myCanvas");
 const restartButton = document.getElementById("restartButton");
 
@@ -26,9 +23,6 @@ if (!ctx) {
 const WIDTH = myCanvas.width;
 const HEIGHT = myCanvas.height;
 
-
-/* Load Game Images */
-
 function loadImage(src) {
    const img = new Image();
    img.src = src;
@@ -42,9 +36,6 @@ const images = {
    background: loadImage("back.png"),
    end: loadImage("end.png")
 };
-
-
-/* Game Settings */
 
 const GRAVITY = 0.25;
 const FLAP_STRENGTH = -4.8;
@@ -60,9 +51,6 @@ let frame;
 let gameState;
 let groundX;
 
-
-/* Bird Settings */
-
 function createBird() {
    return {
       x: 75,
@@ -72,9 +60,6 @@ function createBird() {
       velocity: 0
    };
 }
-
-
-/* Ground Settings */
 
 function getGroundHeight() {
    const img = images.bottom;
@@ -89,9 +74,6 @@ function getGroundHeight() {
    return 40;
 }
 
-
-/* Reset Game */
-
 function resetGame() {
    bird = createBird();
    pipes = [];
@@ -103,9 +85,6 @@ function resetGame() {
    addPipe(WIDTH + 60);
    drawGame();
 }
-
-
-/* Add Pipes */
 
 function addPipe(x) {
    const groundHeight = getGroundHeight();
@@ -126,9 +105,6 @@ function addPipe(x) {
       scored: false
    });
 }
-
-
-/* Bird Input */
 
 function flap() {
    if (gameState === "over") {
@@ -163,9 +139,6 @@ restartButton.addEventListener("click", function () {
    resetGame();
 });
 
-
-/* Draw Background */
-
 function drawBackground() {
    const img = images.background;
 
@@ -176,9 +149,6 @@ function drawBackground() {
       ctx.fillRect(0, 0, WIDTH, HEIGHT);
    }
 }
-
-
-/* Draw Bird */
 
 function drawBird() {
    const img = images.bird;
@@ -216,9 +186,6 @@ function drawBird() {
    ctx.restore();
 }
 
-
-/* Draw Pipes - Bottom Pipe Rotated 180 Degrees */
-
 function drawPipes() {
    const img = images.pipe;
    const groundHeight = getGroundHeight();
@@ -229,7 +196,6 @@ function drawPipes() {
 
       if (img.complete && img.naturalWidth > 0) {
 
-         // Bottom pipe: rotate the image 180 degrees
          const bottomHeight = Math.max(
             0,
             HEIGHT - groundHeight - gapBottom
@@ -252,7 +218,6 @@ function drawPipes() {
 
          ctx.restore();
 
-         // Top pipe: original orientation
          ctx.drawImage(
             img,
             pipe.x,
@@ -262,7 +227,6 @@ function drawPipes() {
          );
 
       } else {
-         // Fallback if pipe.png cannot load
          ctx.fillStyle = "#279447";
          ctx.strokeStyle = "#145c2a";
          ctx.lineWidth = 2;
@@ -296,9 +260,6 @@ function drawPipes() {
       }
    });
 }
-
-
-/* Draw Ground */
 
 function drawGround() {
    const img = images.bottom;
@@ -335,9 +296,6 @@ function drawGround() {
    }
 }
 
-
-/* Draw Score */
-
 function drawScore() {
    ctx.fillStyle = "#ffffff";
    ctx.strokeStyle = "#333333";
@@ -348,9 +306,6 @@ function drawScore() {
    ctx.strokeText(score, WIDTH / 2, 45);
    ctx.fillText(score, WIDTH / 2, 45);
 }
-
-
-/* Draw Messages */
 
 function drawMessage(title, subtitle) {
    const img = images.end;
@@ -421,13 +376,9 @@ function drawMessage(title, subtitle) {
    );
 }
 
-
-/* Collision Detection */
-
 function checkCollision() {
    const groundHeight = getGroundHeight();
 
-   // Ceiling and ground
    if (
       bird.y - bird.height / 2 <= 0 ||
       bird.y + bird.height / 2 >= HEIGHT - groundHeight
@@ -435,7 +386,6 @@ function checkCollision() {
       return true;
    }
 
-   // Pipes
    for (const pipe of pipes) {
       const gapTop = pipe.gapCenter - PIPE_GAP / 2;
       const gapBottom = pipe.gapCenter + PIPE_GAP / 2;
@@ -460,9 +410,6 @@ function checkCollision() {
    return false;
 }
 
-
-/* Update Game */
-
 function updateGame() {
    if (gameState !== "running") {
       return;
@@ -470,16 +417,13 @@ function updateGame() {
 
    frame++;
 
-   // Bird physics
    bird.velocity += GRAVITY;
    bird.y += bird.velocity;
 
-   // Add pipes
    if (frame % PIPE_INTERVAL === 0) {
       addPipe(WIDTH);
    }
 
-   // Move pipes and award points
    pipes.forEach(function (pipe) {
       pipe.x -= PIPE_SPEED;
 
@@ -492,22 +436,16 @@ function updateGame() {
       }
    });
 
-   // Remove pipes off screen
    pipes = pipes.filter(function (pipe) {
       return pipe.x + PIPE_WIDTH > 0;
    });
 
-   // Move ground
    groundX += PIPE_SPEED;
 
-   // Check collisions
    if (checkCollision()) {
       gameState = "over";
    }
 }
-
-
-/* Draw Game */
 
 function drawGame() {
    ctx.clearRect(0, 0, WIDTH, HEIGHT);
@@ -533,17 +471,11 @@ function drawGame() {
    }
 }
 
-
-/* Main Game Loop */
-
 function gameLoop() {
    updateGame();
    drawGame();
    requestAnimationFrame(gameLoop);
 }
-
-
-/* Start Game */
 
 resetGame();
 gameLoop();
